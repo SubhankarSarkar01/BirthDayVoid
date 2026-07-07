@@ -1,43 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Bestie! 🥳</title>
-  <meta name="description" content="A special, interactive digital birthday card for my best friend! 🥳">
-  
+  <title>Happy Birthday! 🥳</title>
+  <meta name="description" content="A special, interactive digital birthday card for a special friend! 🥳">
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Happy Birthday Bestie! 🥳">
+  <meta property="og:title" content="Happy Birthday! 🥳">
   <meta property="og:description" content="A special, interactive digital birthday card made just for you!">
   <meta property="og:image" content="assets/birthday_reveal.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:title" content="Happy Birthday Bestie! 🥳">
+  <meta property="twitter:title" content="Happy Birthday! 🥳">
   <meta property="twitter:description" content="A special, interactive digital birthday card made just for you!">
   <meta property="twitter:image" content="assets/birthday_reveal.png">
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- Floating Background Elements -->
   <div class="bg-decorations" id="bg-bubbles">
     <!-- Bubble divs will be generated dynamically by JS or can be hardcoded. Let's hardcode a few for initial load, JS will add more -->
-    <div class="floating-bubble" style="width: 40px; height: 40px; left: 10%; animation-duration: 8s; animation-delay: 0s;"></div>
-    <div class="floating-bubble" style="width: 25px; height: 25px; left: 25%; animation-duration: 12s; animation-delay: 2s;"></div>
-    <div class="floating-bubble" style="width: 55px; height: 55px; left: 70%; animation-duration: 10s; animation-delay: 1s;"></div>
-    <div class="floating-bubble" style="width: 30px; height: 30px; left: 85%; animation-duration: 14s; animation-delay: 4s;"></div>
-    <div class="floating-bubble" style="width: 45px; height: 45px; left: 45%; animation-duration: 9s; animation-delay: 3s;"></div>
+    <div class="floating-bubble"
+      style="width: 40px; height: 40px; left: 10%; animation-duration: 8s; animation-delay: 0s;"></div>
+    <div class="floating-bubble"
+      style="width: 25px; height: 25px; left: 25%; animation-duration: 12s; animation-delay: 2s;"></div>
+    <div class="floating-bubble"
+      style="width: 55px; height: 55px; left: 70%; animation-duration: 10s; animation-delay: 1s;"></div>
+    <div class="floating-bubble"
+      style="width: 30px; height: 30px; left: 85%; animation-duration: 14s; animation-delay: 4s;"></div>
+    <div class="floating-bubble"
+      style="width: 45px; height: 45px; left: 45%; animation-duration: 9s; animation-delay: 3s;"></div>
   </div>
 
   <!-- Main Phone Simulator Container -->
   <div class="phone-simulator">
-    
+
     <!-- Realistic Top Notch -->
     <div class="phone-notch"></div>
-    
+
     <!-- Phone Status Bar -->
     <div class="status-bar">
       <div class="status-time" id="status-time">12:00</div>
@@ -52,14 +59,15 @@
         </svg>
         <!-- Battery Icon -->
         <svg class="status-icon" viewBox="0 0 24 24">
-          <path d="M17 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m1 3v8c1.2 0 1.8-.8 1.8-2v-4c0-1.2-.6-2-1.8-2z" />
+          <path
+            d="M17 5H3a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m1 3v8c1.2 0 1.8-.8 1.8-2v-4c0-1.2-.6-2-1.8-2z" />
         </svg>
       </div>
     </div>
 
     <!-- Screen Sliding Container -->
     <div class="screen-container">
-      
+
       <!-- Confetti Canvas (renders above content on Screen 3 and 6) -->
       <canvas class="confetti-canvas" id="confetti-canvas"></canvas>
 
@@ -68,18 +76,26 @@
         <div class="lock-header">
           <div class="pfp-frame-wrapper">
             <div class="pfp-frame">
-              <img src="assets/profile_cat.png" alt="Bestie Profile" class="pfp-img" id="img-profile">
+              <img src="assets/profile_cat.png" alt="Friend Profile" class="pfp-img" id="img-profile">
             </div>
             <!-- Sparkle Stars surrounding profile picture -->
             <div class="sparkles-container">
-              <svg class="sparkle" viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
-              <svg class="sparkle" viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
-              <svg class="sparkle" viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
-              <svg class="sparkle" viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z"/></svg>
+              <svg class="sparkle" viewBox="0 0 24 24">
+                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+              </svg>
+              <svg class="sparkle" viewBox="0 0 24 24">
+                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+              </svg>
+              <svg class="sparkle" viewBox="0 0 24 24">
+                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+              </svg>
+              <svg class="sparkle" viewBox="0 0 24 24">
+                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+              </svg>
             </div>
           </div>
           <h2 class="title-text">Enter Passcode</h2>
-          <p class="subtitle-text">Hint: Your birth month & day (MMDD)</p>
+          <p class="subtitle-text">Hint: Your birth day & month (DDMM)</p>
         </div>
 
         <div class="passcode-dots-wrapper" id="passcode-dots">
@@ -112,18 +128,18 @@
       <div class="screen next" id="screen-1b">
         <div class="wrong-container">
           <span class="error-tag">Wrong Code!</span>
-          <h2 class="title-text" style="font-size: 1.45rem;">Are you even my best friend?!</h2>
+          <h2 class="title-text" style="font-size: 1.45rem;">Did you forget your birthday? 🙈</h2>
           <div class="card-img-frame wrong-shake" style="max-height: 200px; margin: 20px 0;">
             <img src="assets/crying_character.png" alt="Crying illustration" class="card-img" id="img-wrong">
           </div>
-          <p class="subtitle-text" style="margin-bottom: 25px;">Please try again. Your bestie title is currently suspended.</p>
+          <p class="subtitle-text" style="margin-bottom: 25px;">Please try again. Let's get that passcode right!</p>
           <button class="btn-primary" id="btn-try-again-lock">Try Again</button>
         </div>
       </div>
 
       <!-- ================= SCREEN 2: THE QUESTION ================= -->
       <div class="screen next" id="screen-2">
-        <h2 class="title-text">Hey Weirdo! 👀</h2>
+        <h2 class="title-text">Hey! 👀</h2>
         <p class="subtitle-text">I made something special for you...</p>
         <div class="card-img-frame">
           <img src="assets/peeking_characters.png" alt="Peeking Characters" class="card-img" id="img-peeking">
@@ -143,7 +159,8 @@
           <div class="card-img-frame wrong-shake" style="max-height: 200px; margin: 20px 0;">
             <img src="assets/crying_character.png" alt="Angry Crying" class="card-img" id="img-crying">
           </div>
-          <p class="subtitle-text" style="margin-bottom: 25px;">How dare you. That is physically impossible. You are forced to try again.</p>
+          <p class="subtitle-text" style="margin-bottom: 25px;">How dare you. That is physically impossible. You are
+            forced to try again.</p>
           <button class="btn-primary" id="btn-try-again-question">Try Again</button>
         </div>
       </div>
@@ -154,14 +171,16 @@
           <div class="card-img-frame" style="max-height: 260px;">
             <img src="assets/birthday_reveal.png" alt="Birthday Party Dog" class="card-img" id="img-birthday">
           </div>
-          <h1 class="hbd-text">HAPPY BIRTHDAY BESTIE! 🥳</h1>
-          <p class="subtitle-text" style="font-size: 1rem; font-weight: 600; color: var(--primary-accent); margin-top: 10px;">
-            (I am your greatest gift, obviously)
+          <h1 class="hbd-text">HAPPY BIRTHDAY! 🥳</h1>
+          <p class="subtitle-text"
+            style="font-size: 1rem; font-weight: 600; color: var(--primary-accent); margin-top: 10px;">
+            (So happy that we connected!)
           </p>
         </div>
         <button class="next-arrow-btn" id="btn-reveal-next">
           <svg viewBox="0 0 24 24">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+              stroke-linejoin="round" fill="none" />
           </svg>
         </button>
       </div>
@@ -169,7 +188,7 @@
       <!-- ================= SCREEN 4: THE LETTER ================= -->
       <div class="screen next" id="screen-4">
         <h2 class="title-text" style="color: var(--primary-accent);">My Wish For U ✨</h2>
-        
+
         <div class="letter-box">
           <!-- Border emoji decorations -->
           <div class="letter-decorations">
@@ -178,7 +197,7 @@
             <span class="letter-emoji letter-emoji-3">🎈</span>
             <span class="letter-emoji letter-emoji-4">🤠</span>
           </div>
-          
+
           <div class="letter-content" id="letter-text">
             <!-- Text loaded from script config -->
           </div>
@@ -195,7 +214,7 @@
             <img src="assets/virtual_hug.png" alt="Warm Hug" class="card-img" id="img-hug">
           </div>
           <p class="subtitle-text" style="font-size: 1.1rem; line-height: 1.4; font-weight: 600;">
-            Cuddle time! I miss your ugly laugh so much.
+            We've only been talking for 5 days, but you've already become so special to me! 🤗
           </p>
         </div>
         <button class="btn-primary" id="btn-hug-next" style="width: 100%; margin-top: 10px;">CLICK ME!</button>
@@ -203,32 +222,33 @@
 
       <!-- ================= SCREEN 6: THE FINAL PROMISE ================= -->
       <div class="screen next" id="screen-6">
-        <h2 class="title-text" style="font-size: 1.5rem;">To Old & Annoying Days! 🥂</h2>
-        
+        <h2 class="title-text" style="font-size: 1.5rem;">To Many More Days of Chatting! 🥂</h2>
+
         <!-- Polaroid photo collage layout -->
         <div class="collage-container">
           <div class="polaroid polaroid-1">
             <div class="polaroid-img-frame">
               <img src="assets/polaroid_one.png" alt="Memories 1" class="polaroid-img" id="img-polaroid-1">
             </div>
-            <div class="polaroid-caption" id="caption-polaroid-1">Troublemakers 💀</div>
+            <div class="polaroid-caption" id="caption-polaroid-1">5-Day Streak! 📅</div>
           </div>
           <div class="polaroid polaroid-2">
             <div class="polaroid-img-frame">
               <img src="assets/polaroid_two.png" alt="Memories 2" class="polaroid-img" id="img-polaroid-2">
             </div>
-            <div class="polaroid-caption" id="caption-polaroid-2">Pizza Partners 🍕</div>
+            <div class="polaroid-caption" id="caption-polaroid-2">Chatting 24/7 💬</div>
           </div>
           <div class="polaroid polaroid-3">
             <div class="polaroid-img-frame">
               <img src="assets/polaroid_three.png" alt="Memories 3" class="polaroid-img" id="img-polaroid-3">
             </div>
-            <div class="polaroid-caption" id="caption-polaroid-3">Dynamic Duo 🤠</div>
+            <div class="polaroid-caption" id="caption-polaroid-3">Super Special ✨</div>
           </div>
         </div>
 
-        <p class="subtitle-text" style="font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--text-main); margin-bottom: 5px;">
-          Best friends forever? (You literally have no choice now). Love you! ❤️
+        <p class="subtitle-text"
+          style="font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--text-main); margin-bottom: 5px;">
+          So glad we started talking. Hope you have the best birthday ever! ❤️
         </p>
       </div>
 
@@ -241,4 +261,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>

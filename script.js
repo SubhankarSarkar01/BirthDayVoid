@@ -9,7 +9,7 @@
 // ==========================================
 const CARD_CONFIG = {
   // Secret passcode to unlock the birthday card
-  passcode: '0607',
+  passcode: '0807',
 
   // Image assets (Can be relative local paths or external URLs)
   images: {
@@ -26,20 +26,19 @@ const CARD_CONFIG = {
 
   // Captions for the polaroids on the final screen
   captions: {
-    polaroid1: 'Troublemakers 💀',
-    polaroid2: 'Pizza Partners 🍕',
-    polaroid3: 'Dynamic Duo 🤠'
+    polaroid1: '5-Day Streak! 📅',
+    polaroid2: 'Chatting 24/7 💬',
+    polaroid3: 'Super Special ✨'
   },
 
   // The heartfelt / funny birthday wish letter content
   // Note: Supports HTML breaks <br> for styling paragraphs
-  letterText: `Dearest best friend,<br><br>
-  Happy Birthday to my favorite weirdo! 🥳<br><br>
-  I am incredibly grateful for all the silly inside jokes, late-night chats, and the fact that we can communicate using just facial expressions.<br><br>
-  Honestly, I don't know what I'd do without your questionable advice and ugly laugh. Here's to another year of making questionable decisions together, eating too much junk food, and complaining about being tired.<br><br>
-  You are stuck with me forever, and I wouldn't have it any other way.<br><br>
-  Love,<br>
-  Your Favorite Person (me, obviously) ❤️`
+  letterText: `Happy Birthday! 🥳<br><br>
+  It's crazy to think we've only been talking for about 5 days, but you've already become so special to me. Our chats have quickly become the highlight of my day!<br><br>
+  Even though we haven't known each other for long, I feel incredibly lucky to have met someone as wonderful, kind, and fun as you.<br><br>
+  I hope your day is just as bright and lovely as you are, and that this year brings you so much happiness.<br><br>
+  Wishing you the absolute best,<br>
+  Me 😊`
 };
 
 
@@ -61,7 +60,7 @@ const DOM = {
   unlockBtn: document.getElementById('btn-unlock'),
   letterTextContainer: document.getElementById('letter-text'),
   confettiCanvas: document.getElementById('confetti-canvas'),
-  
+
   // Navigation trigger buttons
   btnTryAgainLock: document.getElementById('btn-try-again-lock'),
   btnYes: document.getElementById('btn-yes'),
@@ -70,7 +69,7 @@ const DOM = {
   btnRevealNext: document.getElementById('btn-reveal-next'),
   btnLetterNext: document.getElementById('btn-letter-next'),
   btnHugNext: document.getElementById('btn-hug-next'),
-  
+
   // Dynamic images
   imgProfile: document.getElementById('img-profile'),
   imgWrong: document.getElementById('img-wrong'),
@@ -81,7 +80,7 @@ const DOM = {
   imgPolaroid1: document.getElementById('img-polaroid-1'),
   imgPolaroid2: document.getElementById('img-polaroid-2'),
   imgPolaroid3: document.getElementById('img-polaroid-3'),
-  
+
   // Polaroid captions
   captionPolaroid1: document.getElementById('caption-polaroid-1'),
   captionPolaroid2: document.getElementById('caption-polaroid-2'),
@@ -98,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupKeypad();
   setupEventListeners();
   initConfetti();
-  
+
   // Generate random animated bubbles in the background
   generateDynamicBubbles();
 });
@@ -151,7 +150,7 @@ function setupClock() {
 function transitionTo(targetId, direction = 'next') {
   const currentScreen = document.querySelector('.screen.active');
   const targetScreen = document.getElementById(targetId);
-  
+
   if (!currentScreen || !targetScreen || currentScreen === targetScreen) return;
 
   // Reset positioning classes
@@ -161,19 +160,19 @@ function transitionTo(targetId, direction = 'next') {
   if (direction === 'next') {
     currentScreen.classList.add('prev'); // slides left
     targetScreen.classList.add('next');  // starts off-screen right
-    
+
     // Trigger reflow to apply 'next' state before animation starts
     targetScreen.offsetHeight;
-    
+
     targetScreen.classList.remove('next');
     targetScreen.classList.add('active'); // slides into view
   } else {
     currentScreen.classList.add('next'); // slides right
     targetScreen.classList.add('prev');  // starts off-screen left
-    
+
     // Trigger reflow
     targetScreen.offsetHeight;
-    
+
     targetScreen.classList.remove('prev');
     targetScreen.classList.add('active'); // slides into view
   }
@@ -215,7 +214,7 @@ function handleKeyPress(val) {
     if (enteredPasscode.length < 4) {
       enteredPasscode += val;
       updatePasscodeDots();
-      
+
       // Auto-submit when 4 digits are entered
       if (enteredPasscode.length === 4) {
         setTimeout(validatePasscode, 300);
@@ -252,7 +251,7 @@ function validatePasscode() {
     // FAILURE
     // Shake dots
     DOM.passcodeDots.forEach(dot => dot.classList.add('shake'));
-    
+
     // Slide to screen 1B after shake completes
     setTimeout(() => {
       resetPasscodeEntry();
@@ -329,7 +328,7 @@ function initConfetti() {
   canvas = DOM.confettiCanvas;
   if (!canvas) return;
   ctx = canvas.getContext('2d');
-  
+
   // Set resolution to match simulation screen scale
   resizeConfettiCanvas();
   window.addEventListener('resize', resizeConfettiCanvas);
@@ -362,15 +361,15 @@ class ConfettiParticle {
   update() {
     this.x += this.speedX;
     this.y += this.speedY;
-    
+
     // Gravity simulation
     this.speedY += 0.15;
-    
+
     // Horizontal wind oscillation
     this.speedX += Math.sin(this.y * 0.05) * 0.05;
-    
+
     this.rotation += this.rotationSpeed;
-    
+
     if (this.decay > 0) {
       this.opacity -= this.decay;
     }
@@ -382,7 +381,7 @@ class ConfettiParticle {
     ctx.rotate((this.rotation * Math.PI) / 180);
     ctx.globalAlpha = this.opacity;
     ctx.fillStyle = this.color;
-    
+
     // Draw rectangular confetti piece
     ctx.fillRect(-this.size / 2, -this.size / 4, this.size, this.size / 2);
     ctx.restore();
@@ -402,7 +401,7 @@ function startConfetti(singleBurst = false) {
   }
 
   if (confettiInterval) clearInterval(confettiInterval);
-  
+
   if (!singleBurst) {
     // Continuous rain loop
     confettiInterval = setInterval(() => {
@@ -425,13 +424,13 @@ function stopConfetti() {
 
 function updateConfetti() {
   if (!ctx || !canvas) return;
-  
+
   ctx.clearRect(0, 0, width, height);
 
   // Filter out expired particles
   confettiParticles = confettiParticles.filter(p => {
     p.update();
-    
+
     // Conditions to keep: inside screen and opaque
     const isInside = p.y < height + 20 && p.x > -20 && p.x < width + 20;
     const isVisible = p.opacity > 0;
@@ -455,11 +454,11 @@ function generateDynamicBubbles() {
   container.innerHTML = '';
 
   const colors = ['rgba(255, 107, 139, 0.15)', 'rgba(255, 209, 102, 0.15)', 'rgba(6, 214, 160, 0.15)', 'rgba(17, 138, 178, 0.15)', 'rgba(232, 219, 252, 0.3)'];
-  
+
   for (let i = 0; i < 15; i++) {
     const bubble = document.createElement('div');
     bubble.classList.add('floating-bubble');
-    
+
     const size = Math.random() * 50 + 20;
     const left = Math.random() * 100;
     const duration = Math.random() * 15 + 8;
