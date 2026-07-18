@@ -9,7 +9,7 @@
 // ==========================================
 const CARD_CONFIG = {
   // Secret passcode to unlock the birthday card
-  passcode: '1807',
+  passcode: '1907',
 
   // Image assets (Can be relative local paths or external URLs)
   images: {
