@@ -73,55 +73,98 @@
 
       <!-- ================= SCREEN 1: LOCK SCREEN ================= -->
       <div class="screen active" id="screen-1">
-        <div class="lock-header">
-          <div class="pfp-frame-wrapper">
-            <div class="pfp-frame">
-              <img src="assets/profile_cat.png" alt="Friend Profile" class="pfp-img" id="img-profile">
+        <!-- 1A. WALLPAPER & NOTIFICATION VIEW -->
+        <div class="lock-view-container active" id="lock-wallpaper-view">
+          <div class="lock-time-date-container">
+            <h1 class="lock-screen-clock" id="lock-screen-clock">20:26</h1>
+            <p class="lock-screen-date" id="lock-screen-date">Saturday, July 18</p>
+          </div>
+
+          <!-- Glassmorphic iOS Notification -->
+          <div class="lock-notification-card" id="friendship-notification">
+            <div class="notification-header">
+              <div class="notification-app-info">
+                <span class="notification-app-icon">💖</span>
+                <span class="notification-app-name">Friendship Tracker</span>
+              </div>
+              <span class="notification-time">now</span>
             </div>
-            <!-- Sparkle Stars surrounding profile picture -->
-            <div class="sparkles-container">
-              <svg class="sparkle" viewBox="0 0 24 24">
-                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
-              </svg>
-              <svg class="sparkle" viewBox="0 0 24 24">
-                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
-              </svg>
-              <svg class="sparkle" viewBox="0 0 24 24">
-                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
-              </svg>
-              <svg class="sparkle" viewBox="0 0 24 24">
-                <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
-              </svg>
+            <div class="notification-body">
+              <h3 class="notification-title">2 Years of Friendship ♾️</h3>
+              <p class="notification-text">And this friendship is going to last forever! ❤️</p>
             </div>
           </div>
-          <h2 class="title-text">Enter Passcode</h2>
-          <p class="subtitle-text">Hint: Your birth day & month (DDMM)</p>
+
+          <!-- Pulsing Tap to Unlock -->
+          <div class="unlock-prompt" id="btn-show-passcode">
+            <div class="unlock-chevron">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path d="M7.4 15.4L12 10.8l4.6 4.6L18 14l-6-6-6 6z" fill="currentColor"/>
+              </svg>
+            </div>
+            <span>Tap to Unlock</span>
+          </div>
         </div>
 
-        <div class="passcode-dots-wrapper" id="passcode-dots">
-          <div class="passcode-dot"></div>
-          <div class="passcode-dot"></div>
-          <div class="passcode-dot"></div>
-          <div class="passcode-dot"></div>
-        </div>
+        <!-- 1B. PASSCODE ENTRY VIEW -->
+        <div class="lock-view-container" id="lock-passcode-view">
+          <!-- Back button to return to wallpaper lock screen -->
+          <button class="lock-back-btn" id="btn-back-to-wallpaper" aria-label="Back to Lock Screen">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M15.4 16.6L10.8 12l4.6-4.6L14 6l-6 6 6 6z" fill="currentColor"/>
+            </svg>
+          </button>
 
-        <!-- Keypad Grid -->
-        <div class="keypad-grid" id="keypad">
-          <button class="keypad-btn" data-val="1">1</button>
-          <button class="keypad-btn" data-val="2">2</button>
-          <button class="keypad-btn" data-val="3">3</button>
-          <button class="keypad-btn" data-val="4">4</button>
-          <button class="keypad-btn" data-val="5">5</button>
-          <button class="keypad-btn" data-val="6">6</button>
-          <button class="keypad-btn" data-val="7">7</button>
-          <button class="keypad-btn" data-val="8">8</button>
-          <button class="keypad-btn" data-val="9">9</button>
-          <button class="keypad-btn" data-val="*">*</button>
-          <button class="keypad-btn" data-val="0">0</button>
-          <button class="keypad-btn" data-val="#">#</button>
-        </div>
+          <div class="lock-header">
+            <div class="pfp-frame-wrapper">
+              <div class="pfp-frame">
+                <img src="assets/profile_cat.png" alt="Friend Profile" class="pfp-img" id="img-profile">
+              </div>
+              <!-- Sparkle Stars surrounding profile picture -->
+              <div class="sparkles-container">
+                <svg class="sparkle" viewBox="0 0 24 24">
+                  <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+                </svg>
+                <svg class="sparkle" viewBox="0 0 24 24">
+                  <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+                </svg>
+                <svg class="sparkle" viewBox="0 0 24 24">
+                  <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+                </svg>
+                <svg class="sparkle" viewBox="0 0 24 24">
+                  <path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" />
+                </svg>
+              </div>
+            </div>
+            <h2 class="title-text">Enter Passcode</h2>
+            <p class="subtitle-text">Hint: Friendship Anniversary (DDMM)</p>
+          </div>
 
-        <button class="btn-primary" id="btn-unlock">Unlock</button>
+          <div class="passcode-dots-wrapper" id="passcode-dots">
+            <div class="passcode-dot"></div>
+            <div class="passcode-dot"></div>
+            <div class="passcode-dot"></div>
+            <div class="passcode-dot"></div>
+          </div>
+
+          <!-- Keypad Grid -->
+          <div class="keypad-grid" id="keypad">
+            <button class="keypad-btn" data-val="1">1</button>
+            <button class="keypad-btn" data-val="2">2</button>
+            <button class="keypad-btn" data-val="3">3</button>
+            <button class="keypad-btn" data-val="4">4</button>
+            <button class="keypad-btn" data-val="5">5</button>
+            <button class="keypad-btn" data-val="6">6</button>
+            <button class="keypad-btn" data-val="7">7</button>
+            <button class="keypad-btn" data-val="8">8</button>
+            <button class="keypad-btn" data-val="9">9</button>
+            <button class="keypad-btn" data-val="*">*</button>
+            <button class="keypad-btn" data-val="0">0</button>
+            <button class="keypad-btn" data-val="#">#</button>
+          </div>
+
+          <button class="btn-primary" id="btn-unlock">Unlock</button>
+        </div>
       </div>
 
       <!-- ================= SCREEN 1B: WRONG PASSCODE ================= -->
@@ -214,7 +257,7 @@
             <img src="assets/virtual_hug.png" alt="Warm Hug" class="card-img" id="img-hug">
           </div>
           <p class="subtitle-text" style="font-size: 1.1rem; line-height: 1.4; font-weight: 600;">
-            We've only been talking for 5 days, but you've already become so special to me! 🤗
+            2 years of wonderful friendship, and you've become so special to me! 🤗
           </p>
         </div>
         <button class="btn-primary" id="btn-hug-next" style="width: 100%; margin-top: 10px;">CLICK ME!</button>
@@ -222,7 +265,7 @@
 
       <!-- ================= SCREEN 6: THE FINAL PROMISE ================= -->
       <div class="screen next" id="screen-6">
-        <h2 class="title-text" style="font-size: 1.5rem;">To Many More Days of Chatting! 🥂</h2>
+        <h2 class="title-text" style="font-size: 1.5rem;">Friendship Forever & Always! 🥂</h2>
 
         <!-- Polaroid photo collage layout -->
         <div class="collage-container">
@@ -230,25 +273,25 @@
             <div class="polaroid-img-frame">
               <img src="assets/polaroid_one.png" alt="Memories 1" class="polaroid-img" id="img-polaroid-1">
             </div>
-            <div class="polaroid-caption" id="caption-polaroid-1">5-Day Streak! 📅</div>
+            <div class="polaroid-caption" id="caption-polaroid-1">2 Years! 📅</div>
           </div>
           <div class="polaroid polaroid-2">
             <div class="polaroid-img-frame">
               <img src="assets/polaroid_two.png" alt="Memories 2" class="polaroid-img" id="img-polaroid-2">
             </div>
-            <div class="polaroid-caption" id="caption-polaroid-2">Chatting 24/7 💬</div>
+            <div class="polaroid-caption" id="caption-polaroid-2">Besties 24/7 💬</div>
           </div>
           <div class="polaroid polaroid-3">
             <div class="polaroid-img-frame">
               <img src="assets/polaroid_three.png" alt="Memories 3" class="polaroid-img" id="img-polaroid-3">
             </div>
-            <div class="polaroid-caption" id="caption-polaroid-3">Super Special ✨</div>
+            <div class="polaroid-caption" id="caption-polaroid-3">Forever & Always ✨</div>
           </div>
         </div>
 
         <p class="subtitle-text"
           style="font-size: 0.95rem; font-weight: 600; line-height: 1.4; color: var(--text-main); margin-bottom: 5px;">
-          So glad we started talking. Hope you have the best birthday ever! ❤️
+          So glad we are friends. This bond is going to be forever. Hope you have the best birthday ever! ❤️
         </p>
       </div>
 

@@ -9,7 +9,7 @@
 // ==========================================
 const CARD_CONFIG = {
   // Secret passcode to unlock the birthday card
-  passcode: '0807',
+  passcode: '1807',
 
   // Image assets (Can be relative local paths or external URLs)
   images: {
@@ -26,17 +26,18 @@ const CARD_CONFIG = {
 
   // Captions for the polaroids on the final screen
   captions: {
-    polaroid1: '5-Day Streak! 📅',
-    polaroid2: 'Chatting 24/7 💬',
-    polaroid3: 'Super Special ✨'
+    polaroid1: '2 Years! 📅',
+    polaroid2: 'Besties 24/7 💬',
+    polaroid3: 'Forever & Always ✨'
   },
 
   // The heartfelt / funny birthday wish letter content
   // Note: Supports HTML breaks <br> for styling paragraphs
   letterText: `Happy Birthday! 🥳<br><br>
-  It's crazy to think we've only been talking for about 5 days, but you've already become so special to me. Our chats have quickly become the highlight of my day!<br><br>
-  Even though we haven't known each other for long, I feel incredibly lucky to have met someone as wonderful, kind, and fun as you.<br><br>
+  It's crazy to think we've been friends for 2 whole years now! You have become such a special part of my life, and our friendship means the absolute world to me. Our chats and memories are truly irreplaceable.<br><br>
+  I feel incredibly lucky to have met someone as wonderful, kind, and fun as you.<br><br>
   I hope your day is just as bright and lovely as you are, and that this year brings you so much happiness.<br><br>
+  Here's to this friendship going forever! ❤️<br><br>
   Wishing you the absolute best,<br>
   Me 😊`
 };
@@ -84,7 +85,15 @@ const DOM = {
   // Polaroid captions
   captionPolaroid1: document.getElementById('caption-polaroid-1'),
   captionPolaroid2: document.getElementById('caption-polaroid-2'),
-  captionPolaroid3: document.getElementById('caption-polaroid-3')
+  captionPolaroid3: document.getElementById('caption-polaroid-3'),
+
+  // Lock Screen views
+  lockWallpaperView: document.getElementById('lock-wallpaper-view'),
+  lockPasscodeView: document.getElementById('lock-passcode-view'),
+  lockScreenClock: document.getElementById('lock-screen-clock'),
+  lockScreenDate: document.getElementById('lock-screen-date'),
+  btnShowPasscode: document.getElementById('btn-show-passcode'),
+  btnBackToWallpaper: document.getElementById('btn-back-to-wallpaper')
 };
 
 
@@ -126,7 +135,7 @@ function setupConfigElements() {
   }
 }
 
-// Keep simulated status bar clock updated
+// Keep simulated status bar and lock screen clocks updated
 function setupClock() {
   const updateTime = () => {
     const now = new Date();
@@ -134,8 +143,21 @@ function setupClock() {
     let minutes = now.getMinutes();
     hours = hours < 10 ? '0' + hours : hours;
     minutes = minutes < 10 ? '0' + minutes : minutes;
+    
+    // Status bar clock
     if (DOM.statusTime) {
       DOM.statusTime.textContent = `${hours}:${minutes}`;
+    }
+    
+    // Lock screen clock
+    if (DOM.lockScreenClock) {
+      DOM.lockScreenClock.textContent = `${hours}:${minutes}`;
+    }
+    
+    // Lock screen date (dynamic, to match system date)
+    if (DOM.lockScreenDate) {
+      const options = { weekday: 'long', month: 'long', day: 'numeric' };
+      DOM.lockScreenDate.textContent = now.toLocaleDateString('en-US', options);
     }
   };
   updateTime();
@@ -261,10 +283,44 @@ function validatePasscode() {
 }
 
 
+// Toggle lock screen views
+function showPasscodeView() {
+  if (DOM.lockWallpaperView) DOM.lockWallpaperView.classList.remove('active');
+  if (DOM.lockPasscodeView) DOM.lockPasscodeView.classList.add('active');
+}
+
+function showWallpaperView() {
+  if (DOM.lockPasscodeView) DOM.lockPasscodeView.classList.remove('active');
+  if (DOM.lockWallpaperView) DOM.lockWallpaperView.classList.add('active');
+  resetPasscodeEntry();
+}
+
+
 // ==========================================
 // 6. EVENT HANDLERS
 // ==========================================
 function setupEventListeners() {
+  // Lock Screen sub-view transitions
+  if (DOM.btnShowPasscode) {
+    DOM.btnShowPasscode.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPasscodeView();
+    });
+  }
+  
+  if (DOM.lockWallpaperView) {
+    DOM.lockWallpaperView.addEventListener('click', () => {
+      showPasscodeView();
+    });
+  }
+
+  if (DOM.btnBackToWallpaper) {
+    DOM.btnBackToWallpaper.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showWallpaperView();
+    });
+  }
+
   // Screen 1: Unlock Manual click (as backup to auto-submit)
   if (DOM.unlockBtn) {
     DOM.unlockBtn.addEventListener('click', validatePasscode);
@@ -273,6 +329,7 @@ function setupEventListeners() {
   // Screen 1B: Wrong passcode Try Again
   if (DOM.btnTryAgainLock) {
     DOM.btnTryAgainLock.addEventListener('click', () => {
+      showPasscodeView(); // Make sure the keypad is active when we return to screen-1
       transitionTo('screen-1', 'prev');
     });
   }
